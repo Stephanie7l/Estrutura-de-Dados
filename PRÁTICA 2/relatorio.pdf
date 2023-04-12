@@ -1,0 +1,105 @@
+Experimentos realizados para ambas as tarefas
+
+Os experimentos foram gerados a partir de dados obtidos pelas funções diffUserTime e diffSystemTime além do 
+relatório préviamente gerado pelo gprof.
+
+(O executável por padrão da atividade foi compilado passando o parâmetro 5 nas funções de fibonacci e fatorial)  
+
+                Análise em Fibonacci 
+------------------ ------------------- ----------------
+Status Fibonacci Iterativo
+Tempo de usuario (CPU): 0.000001 seg,
+Tempo de sistema: 0.000000
+
+Status Fibonacci Recursivo
+Tempo de usuario (CPU): 0.000001 seg,
+Tempo de sistema: 0.000000
+
+Flat profile:
+
+Each sample counts as 0.01 seconds.
+ no time accumulated
+
+  %   cumulative   self              self     total           
+ time   seconds   seconds    calls  Ts/call  Ts/call  name    
+  0.00      0.00     0.00        2     0.00     0.00  diffSystemTime
+  0.00      0.00     0.00        2     0.00     0.00  diffUserTime
+  0.00      0.00     0.00        1     0.00     0.00  fib_iterativo
+  0.00      0.00     0.00        1     0.00     0.00  fib_recursivo
+  0.00      0.00     0.00        1     0.00     0.00  parseArgs
+
+
+		     Call graph (explanation follows)
+
+index % time    self  children    called     name
+                0.00    0.00       2/2           main [13]
+[1]      0.0    0.00    0.00       2         diffSystemTime [1]
+-----------------------------------------------
+                0.00    0.00       2/2           main [13]
+[2]      0.0    0.00    0.00       2         diffUserTime [2]
+-----------------------------------------------
+                0.00    0.00       1/1           main [13]
+[3]      0.0    0.00    0.00       1         fib_iterativo [3]
+-----------------------------------------------
+                                  14             fib_recursivo [4]
+                0.00    0.00       1/1           main [13]
+[4]      0.0    0.00    0.00       1+14      fib_recursivo [4]
+                                  14             fib_recursivo [4]
+-----------------------------------------------
+                0.00    0.00       1/1           main [13]
+[5]      0.0    0.00    0.00       1         parseArgs [5]
+-----------------------------------------------
+
+Index by function name
+
+   [1] diffSystemTime          [3] fib_iterativo           [5] parseArgs
+   [2] diffUserTime            [4] fib_recursivo
+
+                Análise em Fatorial 
+------------------ ------------------- ----------------
+Status Fatorial Iterativo
+Tempo de usuario (CPU): 0.000001 seg,
+Tempo de sistema: 0.000000
+
+Status Fatorial Recursivo
+Tempo de usuario (CPU): 0.000001
+Tempo de sistema: 0.000000
+
+Flat profile:
+
+Each sample counts as 0.01 seconds.
+ no time accumulated
+
+  %   cumulative   self              self     total           
+ time   seconds   seconds    calls  Ts/call  Ts/call  name    
+  0.00      0.00     0.00        2     0.00     0.00  diffSystemTime
+  0.00      0.00     0.00        2     0.00     0.00  diffUserTime
+  0.00      0.00     0.00        1     0.00     0.00  fat_iterativo
+  0.00      0.00     0.00        1     0.00     0.00  fat_recursivo
+  0.00      0.00     0.00        1     0.00     0.00  parseArgs
+
+		     Call graph (explanation follows)
+
+index % time    self  children    called     name
+                0.00    0.00       2/2           main [13]
+[1]      0.0    0.00    0.00       2         diffSystemTime [1]
+-----------------------------------------------
+                0.00    0.00       2/2           main [13]
+[2]      0.0    0.00    0.00       2         diffUserTime [2]
+-----------------------------------------------
+                0.00    0.00       1/1           main [13]
+[3]      0.0    0.00    0.00       1         fat_iterativo [3]
+-----------------------------------------------
+                                   5             fat_recursivo [4]
+                0.00    0.00       1/1           main [13]
+[4]      0.0    0.00    0.00       1+5       fat_recursivo [4]
+                                   5             fat_recursivo [4]
+-----------------------------------------------
+                0.00    0.00       1/1           main [13]
+[5]      0.0    0.00    0.00       1         parseArgs [5]
+-----------------------------------------------
+
+Index by function name
+
+   [1] diffSystemTime          [3] fat_iterativo           [5] parseArgs
+   [2] diffUserTime            [4] fat_recursivo
